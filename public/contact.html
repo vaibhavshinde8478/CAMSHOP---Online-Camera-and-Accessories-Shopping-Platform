@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">CameraShop</div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="cart.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <a href="cart.html"><img src="https://cdn-icons-png.flaticon.com/128/3523/3523885.png" alt="Cart"></a>
+      <a href="profile.html"><img src="https://cdn-icons-png.flaticon.com/128/5509/5509636.png" alt="User"></a>
+    </div>
+  </header>
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form id="contactForm" method="POST" action="/contact-us">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="phone" placeholder="Your Phone Number" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSLR Cameras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="navbar">
+        <div class="logo">Camera Shop</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="action-camera.html">Action Camera</a></li>
+            <li><a href="compact-cameras.html">Compact Camera</a></li>
+            <li><a href="camcorders.html">Camcorders</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="lenses.html">Lenses</a></li>
+        </ul>
+    </section>
+
+    <section class="product-list">
+        <h2>Lenses</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61stH431xPL._AC_UY218_.jpg" alt="Canon EOS M5">
+                <div class="product-details">
+                    <h3>Sony E Mount FE</h3>
+                    <p class="price">₹19,127.</p>
+                    <button class="add-to-cart" data-product-id="1" data-product-name="Canon EOS M5" data-product-price="800">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/416EZRYCwfL._SX300_SY300_QL70_FMwebp_.jpg" alt="Nikon D850">
+                <div class="product-details">
+                    <h3>Fujifilm Fujinon XF 50MM</h3>
+                    <p class="price">₹1,47,500</p>
+                    <button class="add-to-cart" data-product-id="2" data-product-name="Nikon D850" data-product-price="3000">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/41u6q7Dd+JL._SY300_SX300_.jpg" alt="Sony Alpha 7R IV">
+                <div class="product-details">
+                    <h3>MAXXOX Mobile Camera Lens</h3>
+                    <p class="price">₹249</p>
+                    <button class="add-to-cart" data-product-id="3" data-product-name="Sony Alpha 7R IV" data-product-price="2500">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/51-jPaxf3aL._SX569_.jpg" alt="Canon EOS 5D Mark III">
+                <div class="product-details">
+                    <h3>Sigma 18-50mm F2.8 DC</h3>
+                    <p class="price">₹43,181</p>
+                    <button class="add-to-cart" data-product-id="4" data-product-name="Canon EOS 5D Mark III" data-product-price="2200">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/41GOzJu+u1L._SY300_SX300_.jpg" alt="Pentax K-3 II">
+                <div class="product-details">
+                    <h3>Canon EF 75-300 mm</h3>
+                    <p class="price">₹16,450</p>
+                    <button class="add-to-cart" data-product-id="5" data-product-name="Pentax K-3 II" data-product-price="1500">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/31R0ugknPnL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pentax K-3 II">
+                <div class="product-details">
+                    <h3>Zeiss Touit 2.8/50M</h3>
+                    <p class="price">₹71,105.</p>
+                    <button class="add-to-cart" data-product-id="5" data-product-name="Pentax K-3 II" data-product-price="1500">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Camera Shop</p>
+    </footer>
+    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productName = button.dataset.productName; // Corrected here
+      const productPrice = button.dataset.productPrice; // Corrected here
+
+      // Check if productName or productPrice is undefined
+      if (!productName || !productPrice) {
+        alert('Error: Product name or price is missing!');
+        return;
+      }
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const existingProduct = cart.find(item => item.name === productName);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name: productName, price: productPrice, quantity: 1 });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} added to cart!`);
+    });
+  });
+});
+
+    </script>
+    
+      
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(117, 65, 65, 0.421);
+    padding: 10px 20px;
+    color: rgb(198, 39, 39);
+  }
+  
+  .navbar .logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+
+  }
+  
+  .navbar nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar nav ul li {
+    margin-left: 20px;
+    justify-content: center;
+  }
+  
+  .navbar nav ul li a {
+    color: rgb(9, 33, 77);
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bolder;
+    transition: color 0.3s;
+  }
+  
+  .navbar nav ul li a:hover {
+    color: #b83818;
+  }
+  
+  .navbar .icons a {
+    margin-left: 20px;
+  }
+  
+  .navbar .icons img {
+    width: 50px;
+    height: 50px;
+  }
+
+
+h1 {
+  text-align: center; /* Center the title horizontally */
+  margin-top: 20px; /* Top margin to position the title */
+  margin-bottom: 40px; /* Reduce gap between the title and the form */
+  color: #333; /* Add a subtle color for consistency */
+  font-size: 80px; /* Adjust the font size */
+}
+
+.container {
+  max-width: 600px;
+  height: auto;
+  margin: 40px auto; /* Adjust vertical centering of the form */
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  margin: 10px 0;
+  padding: 20px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form textarea {
+  font-family: Arial, sans-serif;
+  margin: 10px 0;
+  padding: 20px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #ffcc00;
+  margin-top: 20px;
+  padding: 15px 20px;
+  border: none;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 30px;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+form p {
+  text-align: center;
+}
+
+form a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+form a:hover {
+  text-decoration: underline;
+}

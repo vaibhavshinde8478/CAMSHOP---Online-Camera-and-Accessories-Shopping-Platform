@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(117, 65, 65, 0.421);
+  padding: 10px 20px;
+  color: rgb(198, 39, 39);
+}
+
+  
+.navbar .logo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  display: inline;
+  justify-content: right;
+}
+
+.navbar ul li a {
+  color: rgb(9, 33, 77);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight:bolder;
+}
+
+
+        /* Cart section styling */
+        .cart {
+            padding: 20px;
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            background-color: #f1f1f1;
+            transform: translateY(-2px);
+        }
+
+        .cart-item p {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .delete-btn {
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            font-size: 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #e04242;
+        }
+
+        #total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .cart {
+                padding: 15px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item p {
+                margin-bottom: 10px;
+            }
+
+            .delete-btn {
+                margin-top: 10px;
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="navbar">
+        <div class="logo">Camera Shop</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="dslr.html">DSLR</a></li>
+            <li><a href="action-camera.html">Action Camera</a></li>
+            <li><a href="camcorders.html">Camcorders</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="lenses.html">Lenses</a></li>
+            
+        </ul>
+    </section>
+
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total"></div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Camera Shop</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalContainer = document.getElementById('total');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Function to display the cart
+            function displayCart() {
+                cartItemsContainer.innerHTML = ''; // Clear the container before adding updated items
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                    totalContainer.innerHTML = '';
+                    return;
+                }
+
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    total += item.price * item.quantity;
+
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+
+                    cartItem.innerHTML = `
+                        <p><strong>${item.name}</strong><br>Price: $${item.price} x ${item.quantity}</p>
+                        <button class="delete-btn" data-index="${index}">Delete</button>
+                    `;
+
+                    // Attach the delete event to the button
+                    cartItem.querySelector('.delete-btn').addEventListener('click', () => {
+                        removeFromCart(index);
+                    });
+
+                    cartItemsContainer.appendChild(cartItem);
+                });
+
+                totalContainer.innerHTML = `<p>Total: $${total}</p>`;
+            }
+
+            // Function to remove an item from the cart
+            function removeFromCart(index) {
+                cart.splice(index, 1); // Remove the item at the specified index
+                localStorage.setItem('cart', JSON.stringify(cart)); // Update the cart in localStorage
+                displayCart(); // Refresh the displayed cart
+            }
+
+            // Initial call to display the cart
+            displayCart();
+        });
+    </script>
+
+</body>
+</html>

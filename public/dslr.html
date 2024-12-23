@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSLR Cameras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="navbar">
+        <div class="logo">Camera Shop</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="action-camera.html">Action Camera</a></li>
+            <li><a href="compact-cameras.html">Compact Camera</a></li>
+            <li><a href="camcorders.html">Camcorders</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="lenses.html">Lenses</a></li>
+        </ul>
+    </section>
+
+    <section class="product-list">
+        <h2>DSLR Cameras</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://www.bhphotovideo.com/images/images2500x2500/canon_1279c021aa_eos_m5_mirrorless_digital_1281376.jpg" alt="Canon EOS M5">
+                <div class="product-details">
+                    <h3>Canon EOS M5</h3>
+                    <p class="price">₹80,000</p>
+                    <button class="add-to-cart" data-product-id="1" data-product-name="Canon EOS M5" data-product-price="800">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/81WtQ64-SOL.jpg" alt="Nikon D850">
+                <div class="product-details">
+                    <h3>Nikon D850</h3>
+                    <p class="price">₹30,000</p>
+                    <button class="add-to-cart" data-product-id="2" data-product-name="Nikon D850" data-product-price="3000">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/411LipaJyBS._SX300_SY300_QL70_FMwebp_.jpg" alt="Sony Alpha 7R IV">
+                <div class="product-details">
+                    <h3>Sony Alpha 7R IV</h3>
+                    <p class="price">₹2,40,987</p>
+                    <button class="add-to-cart" data-product-id="3" data-product-name="Sony Alpha 7R IV" data-product-price="2500">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/81lghf1fdzL._SX679_.jpg" alt="Canon EOS 5D Mark III">
+                <div class="product-details">
+                    <h3>Sony Alpha ILCE-6100Y </h3>
+                    <p class="price">₹64,990</p>
+                    <button class="add-to-cart" data-product-id="4" data-product-name="Canon EOS 5D Mark III" data-product-price="2200">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcGW0raKWJ7VFVl2JC49Ca9P2ViEPdocwPfg&s" alt="Pentax K-3 II">
+                <div class="product-details">
+                    <h3>Pentax K-3 II</h3>
+                    <p class="price">₹15,000</p>
+                    <button class="add-to-cart" data-product-id="5" data-product-name="Pentax K-3 II" data-product-price="1500">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://www.designinfo.in/wp-content/uploads/2023/05/Sony-a6100-1-485x485-optimized.jpg" alt="Pentax K-3 II">
+                <div class="product-details">
+                    <h3>Sony Alpha ILCE 6100L</h3>
+                    <p class="price">₹58,601</p>
+                    <button class="add-to-cart" data-product-id="5" data-product-name="Pentax K-3 II" data-product-price="1500">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Camera Shop</p>
+    </footer>
+    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productName = button.dataset.productName; // Corrected here
+      const productPrice = button.dataset.productPrice; // Corrected here
+
+      // Check if productName or productPrice is undefined
+      if (!productName || !productPrice) {
+        alert('Error: Product name or price is missing!');
+        return;
+      }
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const existingProduct = cart.find(item => item.name === productName);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name: productName, price: productPrice, quantity: 1 });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} added to cart!`);
+    });
+  });
+});
+
+    </script>
+     
+  
+      
+
+</body>
+</html>
